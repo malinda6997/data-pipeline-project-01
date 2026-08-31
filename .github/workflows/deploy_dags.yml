@@ -1,0 +1,23 @@
+name: Deploy Airflow DAGs to EC2
+
+on:
+  push:
+    branches:
+      - main  # ඔබේ Default Branch එක master නම් 'master' ලෙස වෙනස් කරන්න
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy DAGs to EC2 via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "dags/*"            
+          target: "~/airflow/"         

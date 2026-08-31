@@ -8,26 +8,28 @@ load_dotenv()
 BASE_URL = os.getenv("API_URL")
 
 def extract_products():
-    
+    if not BASE_URL:
+        raise ValueError("Error: API_URL not found in .env file!")
+
     url = f'{BASE_URL}/products'
-    response = requests.get(url)
-    response.raise_for_status()
-    
-    data = response.json()
-    products_df = pd.DataFrame(data)
-    return products_df
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        return pd.DataFrame(response.json())
+    except requests.exceptions.RequestException as e:
+        print(f"Error extracting products: {e}")
+        return pd.DataFrame()
+
 
 def extract_users():
-    
+    if not BASE_URL:
+        raise ValueError("Error: API_URL not found in .env file!")
+
     url = f'{BASE_URL}/users'
-    response = requests.get(url)
-    response.raise_for_status()
-    
-    data = response.json()
-    users_df = pd.DataFrame(data)
-    return users_df
-    
-    
-    
-
-
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        return pd.DataFrame(response.json())
+    except requests.exceptions.RequestException as e:
+        print(f"Error extracting users: {e}")
+        return pd.DataFrame()

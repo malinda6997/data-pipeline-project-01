@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 # Default Arguments Configuration
 default_args = {
-    'owner': 'malinda',
+    'owner': 'airflow',  
     'depends_on_past': False,
     'email_on_failure': False,
     'email_on_retry': False,
@@ -55,5 +55,5 @@ with DAG(
         python_callable=load,
     )
 
-    # Set Task Dependencies (Extract -> Transform -> Load)
+    # Set Task Dependencies
     task_extract >> task_transform >> task_load

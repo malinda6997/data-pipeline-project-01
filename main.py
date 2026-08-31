@@ -1,7 +1,7 @@
 import sys
-from ETL.extract import extract_products, extract_users
-from ETL.transform import transform_products, transform_users
-from ETL.load import load_products, load_users
+from etl.extract import extract_products, extract_users
+from etl.transform import transform_products, transform_users
+from etl.load import load_products, load_users
 
 
 def run_pipeline():
@@ -15,7 +15,7 @@ def run_pipeline():
     if raw_products_df.empty or raw_users_df.empty:
         print("Pipeline aborted: Failed to extract data.")
         sys.exit(1)
-
+ 
     # Step 2: Transform Data
     print("\n[2/3] Transforming extracted data...")
     clean_products_df = transform_products(raw_products_df)

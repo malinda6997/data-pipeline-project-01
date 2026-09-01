@@ -59,7 +59,6 @@ It serves as both a **learning reference** for data engineering fundamentals and
 | ✅ | Dual-destination loading — PostgreSQL for OLAP, S3 for the data lake |
 | ✅ | Fully cloud-native deployment on AWS (EC2, RDS, S3) |
 | ✅ | CI/CD automation via GitHub Actions |
-| ✅ | Infrastructure as Code with Pulumi |
 | ✅ | Built-in monitoring and pipeline verification utilities |
 | ✅ | Structured, production-ready logging |
 
@@ -76,7 +75,6 @@ It serves as both a **learning reference** for data engineering fundamentals and
 | Data Lake | AWS S3 |
 | Compute | AWS EC2 |
 | Containerization | Docker |
-| Infrastructure as Code | Pulumi (Python SDK) |
 | CI/CD | GitHub Actions |
 | ORM / Connection | SQLAlchemy |
 | AWS SDK | Boto3 |
